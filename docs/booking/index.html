@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>國際大旅館</title>
+    <meta name="description" content="1953年建立的國際大旅館，陽明山上的溫泉旅宿體驗，提供大眾池溫泉、雙人與家庭湯屋與圓桌美饌">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+  </head>
+  <body>
+    <header
+    id="site-header"
+    class="site-header"
+    style="
+        background: #fafafa;
+        color: #6b6b6b;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 0.4rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    "
+>
+    <style>
+        .site-header a {
+            color: #6b6b6b;
+            font-weight: bold;
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease;
+        }
+        .site-header a:hover {
+            opacity: 0.65;
+            transform: translateY(-2px);
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* MOBILE MENU (HIDDEN BY DEFAULT) */
+        @media (max-width: 768px) {
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -260px;
+                width: 240px;
+                height: 100%;
+                background: #fafafa;
+                box-shadow: -2px 0 6px rgba(0, 0, 0, 0.08);
+                padding-top: 4rem;
+                transition: right 0.3s ease;
+                display: flex;
+                justify-content: flex-start;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 1.2rem;
+                margin-left: 1.2rem;
+            }
+            .main-nav.open {
+                right: 0;
+            }
+            #mobile-toggle {
+                display: block;
+            }
+        }
+
+        @media (min-width: 769px) {
+            #mobile-toggle {
+                display: none;
+            }
+        }
+
+        .main-nav li a {
+            padding: 0.25rem 0;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        #mobile-toggle {
+            font-size: 1.4rem;
+            background: none;
+            border: none;
+            color: #6b6b6b;
+            cursor: pointer;
+            transition: opacity 0.25s ease;
+        }
+        #mobile-toggle:hover {
+            opacity: 0.65;
+        }
+    </style>
+
+    <div class="container">
+        <div class="logo">
+            <img
+                src="/assets/images/logo_16x9.png"
+                alt="國際大旅館"
+            />
+        </div>
+
+        <nav id="main-nav" class="main-nav">
+            <ul>
+                <li><a href="/">主頁</a></li>
+                <li><a href="/onsen/">大眾風呂</a></li>
+                <li><a href="/booking/">湯屋旅宿</a></li>
+                <li><a href="/dining/">珍饈美饌</a></li>
+                <li>
+                    <a href="/contact/">聯繫與交通</a>
+                </li>
+                <li><a href="/contact/">關於國際</a></li>
+            </ul>
+        </nav>
+
+        <button id="mobile-toggle" class="mobile-toggle">☰</button>
+    </div>
+</header>
+
+<script>
+    const toggleBtn = document.getElementById("mobile-toggle");
+    const nav = document.getElementById("main-nav");
+
+    toggleBtn.addEventListener("click", () => {
+        nav.classList.toggle("open");
+    });
+</script>
+
+    <main id="content" class="container">
+      <article class="column    col-md-4">
+    <img src="/assets/images/IH_publicbath_02.png" alt="大眾裸湯" />
+    <div class="card-body">
+      <h3>大眾男女裸湯</h3>
+      <p>原汁原味 73 年不變。</p>
+    </div>
+  </article>
+
+<article class="column    col-md-4">
+    <img src="/assets/images/IH_japanese_01.png" alt="湯屋旅宿" />
+    <div class="card-body">
+      <h3>湯屋旅宿</h3>
+      <p>本館自 1953 年起以經典溫泉聞名，提供舒適寧靜的湯屋體驗與旅宿選擇，適合雙人、家庭與團體住宿。全館溫泉皆採自然泉源、每日定時清潔消毒，確保最佳水質。</p>
+    </div>
+  </article>
+
+<hr />
+
+<h1 id="-湯屋旅宿">🛁 湯屋旅宿</h1>
+
+<p><img src="assets/images/IH_japanese_01.png" alt="湯屋旅宿" />
+本館自 1953 年起以經典溫泉聞名，提供舒適寧靜的湯屋體驗與旅宿選擇，適合雙人、家庭與團體住宿。全館溫泉皆採自然泉源、每日定時清潔消毒，確保最佳水質。</p>
+
+<hr />
+
+<h1 id="-房型介紹">🏨 房型介紹</h1>
+
+<h2 id="二人房double-room">二人房（Double Room）</h2>
+
+<p><img src="assets/images/room_double.jpg" alt="二人房" />
+溫馨雅緻，適合情侶、夫妻、商務旅客。</p>
+
+<ul>
+  <li>雙人床 / 兩小床</li>
+  <li>獨立衛浴</li>
+  <li>加大湯池（依房型）</li>
+</ul>
+
+<h2 id="三加一日式塌塌米31-tatami-room">三加一日式塌塌米（3+1 Tatami Room）</h2>
+
+<p><img src="assets/images/room_tatami.jpg" alt="日式塌塌米" />
+寬敞舒適，採日式傳統榻榻米設計，適合 3–4 位旅客或家庭入住。</p>
+
+<ul>
+  <li>日式塌塌米寢具</li>
+  <li>親子友善空間</li>
+  <li>和風湯池</li>
+</ul>
+
+<h2 id="六人家庭房family-room--6-persons">六人家庭房（Family Room — 6 Persons）</h2>
+
+<p><img src="assets/images/room_family.jpg" alt="六人家庭房" />
+最受家庭與小型團體歡迎的大空間房型。</p>
+
+<ul>
+  <li>可住 6 人</li>
+  <li>加大湯池</li>
+  <li>多人共享休憩空間</li>
+</ul>
+
+<hr />
+
+<h1 id="-價目說明">💴 價目說明</h1>
+
+<p><img src="assets/images/pricing.jpg" alt="價目圖示" /></p>
+
+<h2 id="平日價週一至週四">平日價（週一至週四）</h2>
+
+<p>住宿與湯屋皆適用標準價格。</p>
+
+<h2 id="週末及假日價">週末及假日價</h2>
+
+<p>含：</p>
+
+<ul>
+  <li>週五至週日</li>
+  <li>國定假日</li>
+  <li>國定假日前一日（前夕）</li>
+</ul>
+
+<p>價格依假日區間調整。</p>
+
+<blockquote>
+  <p>若提供實際費用，我可以將其做成更完整的表格。</p>
+</blockquote>
+
+<hr />
+
+<h1 id="-預定與取消規範">📞 預定與取消規範</h1>
+
+<p><img src="assets/images/booking.jpg" alt="預定方式" /></p>
+
+<h2 id="預定方式">預定方式</h2>
+
+<ul>
+  <li>臨櫃預訂</li>
+  <li>電話預訂</li>
+</ul>
+
+<blockquote>
+  <p>若需要，我可以替你設計線上預約頁面。</p>
+</blockquote>
+
+<h2 id="取消規則">取消規則</h2>
+
+<ul>
+  <li><strong>住房日前一週內取消</strong>：需酌收手續費</li>
+  <li><strong>住房日前一個月預訂</strong>：享提前預約折扣</li>
+</ul>
+
+<hr />
+
+    </main>
+    <footer
+    id="footer"
+    class="site-footer"
+    style="
+        text-align: center;
+        padding: 0.6rem 0;
+        line-height: 1.2;
+        background: #f9f9f9;
+        color: #333;
+    "
+>
+    <style>
+        #footer a {
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease;
+        }
+        #footer a:hover {
+            opacity: 0.7;
+            transform: translateY(-2px);
+        }
+    </style>
+
+    <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+<a
+        class="small-link"
+        href="/contact/"
+        style="font-weight: bold; display: block; margin-bottom: 0.2rem"
+        >前往聯絡與導航</a
+    >
+
+    <div class="copyright" style="font-size: 0.8rem; margin-top: 0.2rem">
+        
+        <p style="margin: 0; font-weight: bold">
+            &copy; 2025 國際大旅館
+        </p>
+        
+
+        <ul
+            style="
+                list-style: none;
+                padding: 0;
+                margin: 0.25rem 0 0 0;
+                display: flex;
+                justify-content: center;
+                gap: 0.6rem;
+                font-weight: bold;
+            "
+        >
+            <li><a href="https://taiwan.commander-d.win">正體中文</a></li>
+            <li><a href="https://english.commander-d.win">English</a></li>
+            <li><a href="https://japan.commander-d.win">日本語</a></li>
+        </ul>
+    </div>
+</footer>
+
+    <script src="/assets/js/site.js"></script>
+  </body>
+</html>
