@@ -181,197 +181,12 @@ const TRANSLATIONS = {
 };
 
 const MAP_QUERY = encodeURIComponent('112018 台北市北投區湖山路一段7號 國際大旅館');
+
+function trackEvent(name, params = {}) {
+  if (typeof window.gtag === 'function') window.gtag('event', name, params);
+}
 const GOOGLE_MAP_URL = `https://www.google.com/maps/search/?api=1&query=${MAP_QUERY}`;
 const APPLE_MAP_URL = `https://maps.apple.com/?q=${MAP_QUERY}`;
-
-const SITE_BASE_URL = 'https://ihhotel.win';
-const SEO_CONFIG = {
-  "index": {
-    "slug": "",
-    "image": "https://ihhotel.win/assets/images/main_1.png",
-    "seo": {
-      "zh-Hant": {
-        "title": "國際大旅館 International Hotel | 北投日式溫泉旅館",
-        "description": "國際大旅館位於北投溫泉帶，創立於1952年，提供大眾池、湯屋與住宿、美味佳餚與山林溫泉旅宿體驗。",
-        "ogLocale": "zh_TW"
-      },
-      "en": {
-        "title": "International Hotel | Japanese-style Hot Spring Retreat in Beitou",
-        "description": "International Hotel is a historic hot spring retreat in Beitou, offering public baths, private rooms, dining, and a serene stay by Yangmingshan.",
-        "ogLocale": "en_US"
-      },
-      "ja": {
-        "title": "国際大旅館 International Hotel | 北投の和風温泉旅館",
-        "description": "国際大旅館は1952年創業。北投温泉帯で大浴場、貸切風呂、宿泊、食事を楽しめる山あいの温泉旅館です。",
-        "ogLocale": "ja_JP"
-      },
-      "ko": {
-        "title": "국제대여관 International Hotel | 베이터우 일본식 온천 여관",
-        "description": "국제대여관은 1952년 설립된 베이터우 온천 여관으로, 대중탕, 탕방·숙박, 식사와 산속 휴식을 제공합니다.",
-        "ogLocale": "ko_KR"
-      }
-    }
-  },
-  "hotspring": {
-    "slug": "hotspring.html",
-    "image": "https://ihhotel.win/assets/images/hotspring_1.png",
-    "seo": {
-      "zh-Hant": {
-        "title": "大眾池 | 國際大旅館 International Hotel",
-        "description": "探索國際大旅館大眾池：北投天然溫泉、男/女裸湯、室內湯池與露天浴區，並提供多種入場方案。",
-        "ogLocale": "zh_TW"
-      },
-      "en": {
-        "title": "Public Baths | International Hotel",
-        "description": "Discover the public hot spring baths at International Hotel in Beitou, with indoor pools, open-air bathing zones, and multiple admission plans.",
-        "ogLocale": "en_US"
-      },
-      "ja": {
-        "title": "大浴場 | 国際大旅館 International Hotel",
-        "description": "北投の天然温泉を楽しめる国際大旅館の大浴場。内湯・露天エリア・複数の入場プランをご案内します。",
-        "ogLocale": "ja_JP"
-      },
-      "ko": {
-        "title": "대중탕 | 국제대여관 International Hotel",
-        "description": "국제대여관 대중탕에서 북투 천연 온천을 즐겨보세요. 실내탕, 노천 구역, 다양한 입장 플랜을 제공합니다.",
-        "ogLocale": "ko_KR"
-      }
-    }
-  },
-  "rooms": {
-    "slug": "rooms.html",
-    "image": "https://ihhotel.win/assets/images/room_1.png",
-    "seo": {
-      "zh-Hant": {
-        "title": "湯屋與住宿 | 國際大旅館 International Hotel",
-        "description": "瀏覽國際大旅館湯屋與住宿房型，從 2 人房到 6 人日式客房，提供泡湯休息與住宿方案。",
-        "ogLocale": "zh_TW"
-      },
-      "en": {
-        "title": "Private Bath & Rooms | International Hotel",
-        "description": "Explore private bath and accommodation options at International Hotel, from cozy rooms for two to spacious Japanese-style rooms for groups.",
-        "ogLocale": "en_US"
-      },
-      "ja": {
-        "title": "貸切風呂・宿泊 | 国際大旅館 International Hotel",
-        "description": "2名向けからグループ向けまで、貸切風呂休憩と宿泊プランを備えた客室をご案内します。",
-        "ogLocale": "ja_JP"
-      },
-      "ko": {
-        "title": "탕방·숙박 | 국제대여관 International Hotel",
-        "description": "2인 객실부터 단체용 일본식 객실까지, 국제대여관의 탕방 휴식 및 숙박 옵션을 살펴보세요.",
-        "ogLocale": "ko_KR"
-      }
-    }
-  },
-  "cuisine": {
-    "slug": "cuisine.html",
-    "image": "https://ihhotel.win/assets/images/cuisine_1.png",
-    "seo": {
-      "zh-Hant": {
-        "title": "美味佳餚 | 國際大旅館 International Hotel",
-        "description": "國際大旅館提供早、午、晚餐點，從清粥小菜到炒飯麵食，為泡湯旅程增添滿足。",
-        "ogLocale": "zh_TW"
-      },
-      "en": {
-        "title": "Dining | International Hotel",
-        "description": "Enjoy breakfast, lunch, and dinner at International Hotel, from comforting congee sets to satisfying rice and noodle dishes after your soak.",
-        "ogLocale": "en_US"
-      },
-      "ja": {
-        "title": "お食事 | 国際大旅館 International Hotel",
-        "description": "朝食、昼食、夕食を通して、湯上がりにうれしいお粥や炒飯、麺料理をご用意しています。",
-        "ogLocale": "ja_JP"
-      },
-      "ko": {
-        "title": "미식 | 국제대여관 International Hotel",
-        "description": "국제대여관은 아침, 점심, 저녁 식사를 제공하며, 죽과 볶음밥, 면 요리로 온천 여행을 채워드립니다.",
-        "ogLocale": "ko_KR"
-      }
-    }
-  },
-  "contact": {
-    "slug": "contact.html",
-    "image": "https://ihhotel.win/assets/images/contact_1.png",
-    "seo": {
-      "zh-Hant": {
-        "title": "聯絡我們 | 國際大旅館 International Hotel",
-        "description": "聯絡國際大旅館：112018 臺北市北投區湖山路一段7號，電話 +886-2-28617100，提供地圖瀏覽與導航按鈕。",
-        "ogLocale": "zh_TW"
-      },
-      "en": {
-        "title": "Contact | International Hotel",
-        "description": "Contact International Hotel at No. 7, Section 1, Hushan Road, Beitou District, Taipei. Get directions, map access, and booking phone details.",
-        "ogLocale": "en_US"
-      },
-      "ja": {
-        "title": "お問い合わせ | 国際大旅館 International Hotel",
-        "description": "国際大旅館へのアクセス情報。住所、電話番号、地図表示、Google Maps / Appleマップのナビをご利用いただけます。",
-        "ogLocale": "ja_JP"
-      },
-      "ko": {
-        "title": "문의하기 | 국제대여관 International Hotel",
-        "description": "국제대여관 연락처와 오시는 길을 확인하세요. 주소, 전화, 지도 보기, 길찾기 기능을 제공합니다.",
-        "ogLocale": "ko_KR"
-      }
-    }
-  }
-};
-
-function getRequestedLang() {
-  const urlLang = new URLSearchParams(window.location.search).get('lang');
-  if (urlLang && TRANSLATIONS[urlLang]) return urlLang;
-  return localStorage.getItem('ih-lang') || 'zh-Hant';
-}
-
-function updateSeo(lang) {
-  const page = document.body.dataset.page || 'index';
-  const config = SEO_CONFIG[page];
-  if (!config) return;
-  const seo = config.seo[lang] || config.seo['zh-Hant'];
-  document.title = seo.title;
-  const setMeta = (selector, value) => {
-    const el = document.querySelector(selector);
-    if (el) el.setAttribute('content', value);
-  };
-  setMeta('meta[name="description"]', seo.description);
-  setMeta('meta[property="og:title"]', seo.title);
-  setMeta('meta[property="og:description"]', seo.description);
-  setMeta('meta[name="twitter:title"]', seo.title);
-  setMeta('meta[name="twitter:description"]', seo.description);
-  setMeta('meta[property="og:locale"]', seo.ogLocale);
-
-  const pagePath = config.slug ? `/${config.slug}` : '/';
-  const absolutePage = `${SITE_BASE_URL}${pagePath}`;
-  const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.setAttribute('href', absolutePage);
-
-  const hreflangs = {
-    'zh-Hant': `${absolutePage}?lang=zh-Hant`,
-    'en': `${absolutePage}?lang=en`,
-    'ja': `${absolutePage}?lang=ja`,
-    'ko': `${absolutePage}?lang=ko`,
-    'x-default': absolutePage,
-  };
-  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(link => {
-    const code = link.getAttribute('hreflang');
-    if (hreflangs[code]) link.setAttribute('href', hreflangs[code]);
-  });
-}
-
-function updateLocalizedLinks(lang) {
-  const url = new URL(window.location.href);
-  url.searchParams.set('lang', lang);
-  window.history.replaceState({}, '', url);
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('https')) return;
-    const dest = new URL(href, window.location.href);
-    if (!dest.pathname.endsWith('.html') && dest.pathname !== '/' && !dest.pathname.endsWith('/')) return;
-    dest.searchParams.set('lang', lang);
-    link.setAttribute('href', dest.pathname + dest.search + dest.hash);
-  });
-}
 
 function applyTranslations(lang) {
   const dict = TRANSLATIONS[lang] || TRANSLATIONS['zh-Hant'];
@@ -389,21 +204,33 @@ function applyTranslations(lang) {
     if (dict[key]) el.setAttribute(attr, dict[key]);
   });
   document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
-  updateSeo(lang);
-  updateLocalizedLinks(lang);
 }
 
 function initLanguage() {
-  const saved = getRequestedLang();
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  const saved = urlLang || localStorage.getItem('ih-lang') || 'zh-Hant';
   applyTranslations(saved);
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.lang;
       localStorage.setItem('ih-lang', lang);
+      const next = new URL(window.location.href);
+      next.searchParams.set('lang', lang);
+      window.history.replaceState({}, '', next);
       applyTranslations(lang);
+      trackEvent('language_switch', { language: lang });
     });
   });
+  document.querySelectorAll('a[href$=".html"], a[href="index.html"]').forEach(link => {
+    try {
+      const url = new URL(link.getAttribute('href'), window.location.href);
+      if (!url.searchParams.get('lang')) url.searchParams.set('lang', saved);
+      link.setAttribute('href', url.pathname.replace(/^\//, '') + url.search);
+    } catch (e) {}
+  });
 }
+
 
 function initReveal() {
   const obs = new IntersectionObserver(entries => {
@@ -435,7 +262,7 @@ function initMapModal() {
   const closer = modal.querySelector('.modal-close');
   modal.querySelector('[data-google-map]').href = GOOGLE_MAP_URL;
   modal.querySelector('[data-apple-map]').href = APPLE_MAP_URL;
-  openers.forEach(btn => btn.addEventListener('click', () => modal.classList.add('open')));
+  openers.forEach(btn => btn.addEventListener('click', () => { modal.classList.add('open'); trackEvent('navigation_click', { location: window.location.pathname }); }));
   closer.addEventListener('click', () => modal.classList.remove('open'));
   modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
 }
@@ -457,6 +284,10 @@ function initLightbox() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="tel:"]').forEach(el => el.addEventListener('click', () => trackEvent('booking_click', { location: window.location.pathname })));
+  document.querySelectorAll('[data-google-map]').forEach(el => el.addEventListener('click', () => trackEvent('map_choice', { provider: 'google' })));
+  document.querySelectorAll('[data-apple-map]').forEach(el => el.addEventListener('click', () => trackEvent('map_choice', { provider: 'apple' })));
+
   initLanguage();
   initReveal();
   initParallax();
